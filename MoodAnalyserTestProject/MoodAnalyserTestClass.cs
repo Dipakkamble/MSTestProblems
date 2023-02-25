@@ -22,5 +22,17 @@ namespace MoodAnalyserTestProject
             //Assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        //[DataRow(null, "object reference not set to an instance of object.")]
+        [DataRow(null, "happy")]
+        public void Given_NullMessage_Should_Return_Exception(string message, string expected)
+        {
+            //Arrange
+            MoodAnalyser mood = new MoodAnalyser(message);
+            //Act
+            string actual = mood.AnalyseMood();
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

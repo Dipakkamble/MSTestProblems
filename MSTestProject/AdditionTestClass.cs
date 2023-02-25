@@ -13,7 +13,7 @@ namespace MSTestProject
         [DataRow(70, 20, 90)]
         [DataRow(10, 10, 20)]
         public void Given_Two_Numbers_Should_Return_Sum(int first,int second,int expected)
-        {
+        { 
             ///AAA Methodology
             // Arrange
             ///int first = 10; int second = 20;

@@ -15,13 +15,21 @@ namespace MSTestProblems
         }
         public string AnalyseMood() 
         {
-            if (message.ToLower().Contains("happy"))
+            try
             {
-                return "happy";
+                if (message.ToLower().Contains("happy"))
+                {
+                    return "happy";
+                }
+                else
+                {
+                    return "sad";
+                }
             }
-            else 
+            catch (NullReferenceException ex) 
             {
-                return "sad";
+                Console.WriteLine(ex.Message);
+                return "happy";
             }
         }
     }
