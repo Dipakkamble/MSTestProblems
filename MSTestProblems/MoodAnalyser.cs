@@ -21,6 +21,10 @@ namespace MSTestProblems
                 {
                     return "happy";
                 }
+                else if (message.Equals(string.Empty))
+                {
+                    throw new CustomMoodAnalyserException("Message is having empty", CustomMoodAnalyserException.ExceptionTypes.EMPTY_MOOD);
+                }
                 else
                 {
                     return "sad";
@@ -29,7 +33,7 @@ namespace MSTestProblems
             catch (NullReferenceException ex) 
             {
                 Console.WriteLine(ex.Message);
-                return "happy";
+                throw new CustomMoodAnalyserException("Message is having null",CustomMoodAnalyserException.ExceptionTypes.NULL_MOOD);
             }
         }
     }

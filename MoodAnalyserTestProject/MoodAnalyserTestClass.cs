@@ -10,7 +10,7 @@ namespace MoodAnalyserTestProject
         [TestMethod]
         [DataRow("I am happy mood","happy")]
         [DataRow("I am SAD mood", "sad")]
-        public void Given_Message_Should_Return_UserMood(string message,string expected)
+        public void Given_Message_Should_Return_UserMood(string message, string expected)
         {
             /// AAA Methodology
             // Arrange
@@ -24,15 +24,43 @@ namespace MoodAnalyserTestProject
         }
         [TestMethod]
         //[DataRow(null, "object reference not set to an instance of object.")]
-        [DataRow(null, "happy")]
-        public void Given_NullMessage_Should_Return_Exception(string message, string expected)
+        //[DataRow(null, "happy")]
+        public void Given_NullMessage_Should_Return_Exception()
         {
-            //Arrange
-            MoodAnalyser mood = new MoodAnalyser(message);
-            //Act
-            string actual = mood.AnalyseMood();
-            //Assert
-            Assert.AreEqual(expected, actual);
+            string message=null; 
+            string expected= "Message is having null";
+            try
+            {
+                //Arrange
+                MoodAnalyser mood = new MoodAnalyser(message);
+                //Act
+                string actual = mood.AnalyseMood();
+                //Assert
+                Assert.AreEqual(expected, actual); 
+            }
+            catch (CustomMoodAnalyserException ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
+        }
+        //3.2 Test Case
+        public void Given_EmptyMessage_Should_Return_CustomException()
+        {
+            string message = "";
+            string expected = "Message is having empty";
+            try
+            {
+                //Arrange
+                MoodAnalyser mood = new MoodAnalyser(message);
+                //Act
+                string actual = mood.AnalyseMood();
+                //Assert
+                Assert.AreEqual(expected, actual);
+            }
+            catch (CustomMoodAnalyserException ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
         }
     }
 }
