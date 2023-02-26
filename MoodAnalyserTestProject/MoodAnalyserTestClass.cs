@@ -44,6 +44,7 @@ namespace MoodAnalyserTestProject
             }
         }
         //3.2 Test Case
+        [TestMethod]
         public void Given_EmptyMessage_Should_Return_CustomException()
         {
             string message = "";
